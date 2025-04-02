@@ -68,6 +68,21 @@ export async function signIn(params: SignInParams){
     }
 }
 
+export async function signInwithProvider(params: string){
+    const  idToken = params;
+    try{
+        await setSessionCookie(idToken);
+    }catch(e: any){
+        console.log(e.message);
+        return {
+            success: false,
+            message: "Failed to log into account. Please try again.",
+          };
+        
+    }
+
+}
+
 export async function setSessionCookie(idToken: string){
     const cookieStore = await cookies();
 
