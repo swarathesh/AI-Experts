@@ -17,7 +17,7 @@ import {
 } from "firebase/auth";
 
 import { signIn, signup } from "@/lib/actions/auth.action";
-import { auth } from "@/firebase/client";
+import { auth } from "../firebase/client";
 
 
 
@@ -49,7 +49,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      if (type === "sign-in") {
+      if (type === "sign-up") {
         const {name, email, password} = values;
 
         // Call the sign in function
@@ -68,7 +68,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
         }
 
         toast.success("Signed in successfully");
-        router.push("/");
+        router.push("/sign-in");
         console.log(values);
       } else {
         const {email,password} = values;
@@ -79,7 +79,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           return;
         }
         await signIn({email, idToken});
-        toast.success("Account created successfully");
+        toast.success("signed in successfully");
         router.push("/");
         console.log(values);
       }

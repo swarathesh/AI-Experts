@@ -1,6 +1,6 @@
 'use server';
 
-import { auth, db } from "@/fiirebase/admin";
+import { auth, db } from "@/firebase/admin";
 import { cookies } from "next/headers";
 
 export async function signup(params:SignUpParams){
