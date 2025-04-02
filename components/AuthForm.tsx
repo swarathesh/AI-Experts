@@ -18,7 +18,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 
-import { signIn, signInwithProvider, signup } from "@/lib/actions/auth.action";
+import { signIn, signup } from "@/lib/actions/auth.action";
 import { auth } from "../firebase/client";
 
 const authFormSchema = (type: FormType) => {
