@@ -144,12 +144,15 @@ const AuthForm = ({ type }: { type: FormType }) => {
           </Link>
         </p>
         {/* Add Google Sign-Up Button */}
-        <div className="mt-4 text-center">
-          <p className="text-gray-200">Or</p>
+        <div className="mt-4 flex flex-col items-center">
+          <p className="text-gray-200 self-center relative px-4">
+            <span className="bg-card px-2">{`Or`}</span>
+          </p>
           <button
             onClick={handleGoogleSignIn}
-            className="google-signup-btn bg-red-500 text-white px-4 py-2 rounded mt-2"
+            className="google-signup-btn flex items-center justify-center bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded shadow mt-5"
           >
+            <Image src="/google.png" alt="Google Icon" width={20} height={20} className="mr-2" />
             {isSingIn ? "Sign in with Google" : "Sign up with Google"}
           </button>
         </div>
