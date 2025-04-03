@@ -31,7 +31,6 @@ const page = () => {
       </section>
       <section className="flex flex-col gap-6 mt-8">
         <h2>Your Questions</h2>
-        <TDEECalculator></TDEECalculator>
         <div className="interviews-section">
           {dummyInterview.map((interview) => (
             <div key={interview.id} className="interview-card">
