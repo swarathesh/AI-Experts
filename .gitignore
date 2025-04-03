@@ -35,7 +35,7 @@ yarn-error.log*
 
 # vercel
 .vercel
-
+alphazulu-5e388-firebase-adminsdk-jtpsx-6d3edc7f21.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
