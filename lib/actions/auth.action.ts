@@ -3,7 +3,7 @@
 import { auth, db } from "@/firebase/admin";
 import { cookies } from "next/headers";
 
-export async function signup(params: SignUpParams) {
+export async function signup(params: SignUpParams): Promise<unknown> {
   const { uid, name, email } = params;
   try {
     const user = await db.collection("users").doc(uid).get();
@@ -24,22 +24,16 @@ export async function signup(params: SignUpParams) {
       success: true,
       message: "User created successfully",
     };
-  } catch (e: any) {
-    console.log(e.message);
-    if (e.code === "auth/email-already-in-use") {
-      return {
-        success: false,
-        message: "Email already in use",
-      };
-    }
+  } catch (e: unknown) {
+    console.log(e);
+    return {
+      success: false,
+      message: "Something went wrong",
+    };
   }
-  return {
-    success: false,
-    message: "Something went wrong",
-  };
 }
 
-export async function signIn(params: SignInParams) {
+export async function signIn(params: SignInParams): Promise<unknown> {
   const { email, idToken } = params;
 
   try {
@@ -53,8 +47,8 @@ export async function signIn(params: SignInParams) {
     }
 
     await setSessionCookie(idToken);
-  } catch (e: any) {
-    console.log(e.message);
+  } catch (e: unknown) {
+    console.log(e);
     return {
       success: false,
       message: "Failed to log into account. Please try again.",
@@ -62,12 +56,12 @@ export async function signIn(params: SignInParams) {
   }
 }
 
-export async function signInwithProvider(params: string) {
+export async function signInwithProvider(params: string): Promise<unknown> {
   const idToken = params;
   try {
     await setSessionCookie(idToken);
-  } catch (e: any) {
-    console.log(e.message);
+  } catch (e: unknown) {
+    console.log(e);
     return {
       success: false,
       message: "Failed to log into account. Please try again.",
@@ -103,17 +97,15 @@ export async function getCurrentUser(): Promise<User | null> {
     const user = await db.collection("users").doc(decodedClaims.uid).get();
 
     if (!user.exists) {
-      {
-        return null;
-      }
+      return null;
     }
     return {
         id: user.id,
         ...user.data()
  } as User;
 
-  } catch (e: any) {
-    console.log(e.message);
+  } catch (e: unknown) {
+    console.log(e);
     return null;
   }
 }

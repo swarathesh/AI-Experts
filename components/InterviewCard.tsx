@@ -9,7 +9,6 @@ import DisplayTechIcons from "./DisplayTechIcons";
 
 const InterviewCard = ({
   interviewId,
-  userId,
   role,
   type,
   techstack,
@@ -53,7 +52,7 @@ const InterviewCard = ({
             </p>
         </div>
         <div className="flex flex-row justify-between">
-            <DisplayTechIcons techstack={techstack} />
+            <DisplayTechIcons techStack={techstack} />
             <Button className="btn-primary">
                 <Link href={feedback ? `/interview/${interviewId}/feedback` : `/interview/${interviewId}`}>
                     {feedback ? 'View Feedback' : 'Start Interview'}

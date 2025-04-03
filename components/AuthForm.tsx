@@ -64,11 +64,13 @@ const AuthForm = ({ type }: { type: FormType }) => {
           name: name!,
           email,
           password,
-        });
+        })
 
-        if (!result?.success) {
-          toast.error(result.message);
-          return;
+        if (typeof result === 'object' && result !== null && 'success' in result && 'message' in result) {
+          if (!(result as { success: boolean, message: string }).success) {
+            toast.error((result as { success: boolean, message: string }).message);
+            return;
+          }
         }
 
         toast.success("Signed up successfully");
@@ -91,7 +93,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
         router.push("/");
         console.log(values);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.log(error);
       toast.error(`An error occurred ${error}`);
     }
@@ -173,7 +175,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
       await signIn({ email, idToken });
       toast.success("Signed in with Google successfully");
       router.push("/");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.log(error);
       toast.error(`An error occurred ${error}`);
     }
