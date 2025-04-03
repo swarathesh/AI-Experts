@@ -1,3 +1,4 @@
+import TDEECalculator from "@/components/TDEECalculator";
 import { isAuthenticatd, signOut } from "@/lib/actions/auth.action";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,7 +26,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
           </button>
         )}
       </nav>
-      {children}
+      <TDEECalculator />
     </div>
   );
 };
