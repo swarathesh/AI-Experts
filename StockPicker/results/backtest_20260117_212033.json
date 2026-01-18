@@ -1,0 +1,18 @@
+{
+  "initial_capital": 100000,
+  "final_capital": 101048.01092473786,
+  "total_return": 1048.0109247378568,
+  "total_return_pct": "1.05%",
+  "annualized_return": "5.28%",
+  "max_drawdown": "-2.16%",
+  "sharpe_ratio": 0.7138697300326703,
+  "sortino_ratio": 1.242153890361592,
+  "win_rate": "60.00%",
+  "profit_factor": 1.2708737830204018,
+  "total_trades": 55,
+  "winning_trades": 33,
+  "losing_trades": 22,
+  "avg_win": "7.19%",
+  "avg_loss": "-5.05%",
+  "avg_trade_duration": "21.3 days"
+}
